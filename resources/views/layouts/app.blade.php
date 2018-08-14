@@ -103,6 +103,11 @@
             $("<strong>").html(data.user.name + ": "),
             data.message.message
         ]))
+        if (("Notification" in window)){
+            if (Notification.permission === "granted") {
+                new Notification(data.user.name, {body: data.message.message});
+            }
+        }
         $("input[name='message']").val("").focus()
       });
       
